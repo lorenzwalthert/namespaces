@@ -1,19 +1,25 @@
-Package: namespaces
 Type: Package
+Package: namespaces
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Authors@R: person("Lorenz", "Walthert", role = c("cre", "aut"), email = "lorenz.walthert@icloud.com")
+Authors@R: 
+    person(given = "Lorenz",
+           family = "Walthert",
+           role = c("cre", "aut"),
+           email = "lorenz.walthert@icloud.com")
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
+Imports: 
+    magrittr (>= 1.0.0),
+    purrr (>= 0.1.0),
+    base64enc (>= 0.1-0),
+    tibble (>= 1.4.2),
+    gh (>= 1.0.1),
+    enc (>= 0.1),
+    desc (>= 1.0.0),
+    rlang (>= 0.1)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Imports: 
-    magrittr,
-    purrr,
-    base64enc,
-    tibble,
-    gh,
-    enc

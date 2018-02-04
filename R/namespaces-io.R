@@ -52,3 +52,32 @@ parse_cran_description <- function(package) {
   namespace
 }
 
+#' Write out minimal dependencies from a tabular namespace
+#'
+#' @param path The path to the source package for which DESCRIPTION should be
+#'   adapted.
+#' @param namespace A name space in a tabular format, i.e. a data frame with
+#'   two columns `package` and `object` to be written to a file. If `NULL`,
+#'   [collect_minimal_dependencies()] will be used to obtain the information
+#'   necessary.
+#' @importFrom purrr pmap
+#' @export
+write_minimal_dependencies <- function(path = ".", namespace = NULL) {
+  if (is.null(namespace)) {
+    namespace <- collect_minimal_dependencies(path)
+  }
+  pmap(namespace, set_dependency)
+}
+
+#' @importFrom desc desc_set_dep
+set_dependency <- function(package, object, first_release) {
+  desc_set_dep(
+    package = package,
+    type = "Imports",
+    version = as_minimal_version(first_release)
+  )
+}
+
+as_minimal_version <- function(x) {
+  paste(">=", x)
+}

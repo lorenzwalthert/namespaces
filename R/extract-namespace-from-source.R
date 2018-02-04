@@ -1,6 +1,6 @@
 extract_namespace_from_package_source <- function(path = ".") {
   r_files <- list.files(file.path(path, "R/"))
-  map_dfr(file.path("R/", r_files), extract_namespace_from_file) %>%
+  map_dfr(file.path(path, "R/", r_files), extract_namespace_from_file) %>%
     type_object_to_namespace()
 }
 
@@ -33,6 +33,7 @@ extract_namespace_from_parse_data <- function(parse_data) {
   map_dfr(parents_with_ns_get, extract_namespace_with_parents, parse_data)
 }
 
+#' @importFrom rlang set_names
 extract_namespace_with_parents <- function(parent, parse_data) {
   pkg_and_obj_idx <- (parse_data$parent %in% parent) &
   (parse_data$token %in% c("SYMBOL_PACKAGE", "SYMBOL_FUNCTION_CALL", "SYMBOL"))

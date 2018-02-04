@@ -1,15 +1,27 @@
 subset_exports <- function(tabular_namespace, simplify = TRUE) {
-  is_export <- tabular_namespace$type == "export"
+  is_export <- is_export(tabular_namespace)
   tabular_export <- tabular_namespace[is_export, "object"] %>%
     unlist()
   tabular_export
 }
 
+is_export <- function(tabular_namespace) {
+  tabular_namespace$type == "export"
+}
+
 subset_non_base_packages <- function(namespace) {
-  pkgs <- installed.packages()
-  base_pkgs <- pkgs[, "Priority"] %in% "base"
-  base_idx <- namespace$package %in% base_pkgs
+  base_idx <- namespace$package %in% base_pkgs()
   namespace[!base_idx,]
+}
+
+subset_valid_tags <- function(tags) {
+  tags[!grepl("[[:alpha:]]", tags)]
+}
+
+base_pkgs <- function() {
+  pkgs <- installed.packages()
+  is_base_pkg <- pkgs[, "Priority"] %in% "base"
+  pkgs[is_base_pkg, "Package"]
 }
 
 subset_imported_pkgs <- function(tabular_namespace,
