@@ -17,7 +17,7 @@
 #' @param path The path to source package.
 #' @importFrom purrr pmap_chr
 #' @export
-collect_minimal_dependencies <- function(path) {
+collect_minimal_dependencies <- function(path = ".") {
   # desc <- parse_cran_description()
   clean_imports <- parse_local_namespace(path) %>%
     bind_rows(extract_namespace_from_package_source(path)) %>%
