@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  cache = FALSE
+)
+```
+
+**This is highly experimental**
+
+![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+
+
+
+# namespaces
+
+The goal of namespaces is to find minimal versions of dependencies of a package 
+by inspecting `NAMESPACE` and `DESCRIPTION` files of those dependencies from the 
+[r-pkg.org CRAN mirror](https://github.com/cran). The method hence does not 
+ensure the minimal version found is enough to make the code work, it just 
+ensures that functions imported from dependencies were exported in those 
+package versions indicated in `DESCRIPTION`. 
+
+
+## Example
+
+You can find out in which release an object was exported for the first time.
+```{r}
+library("namespaces")
+find_first_release("dplyr", "mutate")
+```
+
+You can collect all minimal dependencies of a package by inspecting 
+masked function calls (`pkg::fun()`) in your source code and the `NAMESPACE` of
+the package
+```{r}
+library("dplyr")
+collect_minimal_dependencies() %>%
+  group_by(package) %>%
+  summarize(min(first_release))
+```
+
+You can update all `DESCRIPTION` entries to match the minimal versions 
+required found with the above function.
+```{r, eval = FALSE}
+# write_minimal_dependencies() # does not yet work.
+```
+
