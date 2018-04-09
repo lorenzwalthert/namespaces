@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  cache = FALSE
+  cache = TRUE
 )
 ```
 
@@ -47,6 +47,19 @@ collect_minimal_dependencies() %>%
   group_by(package) %>%
   summarize(min(first_release))
 ```
+
+If you want to do namespaces analysis, you can also parse any namespace from
+any package from CRAN.
+
+```{r}
+parse_cran_namespace("xgboost")
+```
+
+Or a local name space:
+```{r}
+parse_local_namespace(here::here())
+```
+
 
 You can update all `DESCRIPTION` entries to match the minimal versions 
 required found with the above function.

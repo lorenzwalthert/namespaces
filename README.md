@@ -48,6 +48,47 @@ collect_minimal_dependencies() %>%
 #> 8 tibble    1.4.2
 ```
 
+If you want to do namespaces analysis, you can also parse any namespace
+from any package from CRAN.
+
+``` r
+parse_cran_namespace("xgboost")
+#> # A tibble: 77 x 2
+#>    type     object                      
+#>    <chr>    <chr>                       
+#>  1 S3method "\"[\",xgb.DMatrix"         
+#>  2 S3method "\"dimnames<-\",xgb.DMatrix"
+#>  3 S3method dim,xgb.DMatrix             
+#>  4 S3method dimnames,xgb.DMatrix        
+#>  5 S3method getinfo,xgb.DMatrix         
+#>  6 S3method predict,xgb.Booster         
+#>  7 S3method predict,xgb.Booster.handle  
+#>  8 S3method print,xgb.Booster           
+#>  9 S3method print,xgb.DMatrix           
+#> 10 S3method print,xgb.cv.synchronous    
+#> # ... with 67 more rows
+```
+
+Or a local name space:
+
+``` r
+parse_local_namespace(here::here())
+#> # A tibble: 22 x 2
+#>    type       object                      
+#>    <chr>      <chr>                       
+#>  1 export     collect_minimal_dependencies
+#>  2 export     find_first_release          
+#>  3 export     parse_cran_namespace        
+#>  4 export     parse_local_namespace       
+#>  5 export     write_minimal_dependencies  
+#>  6 import     gh                          
+#>  7 import     tibble                      
+#>  8 importFrom desc,desc_set_dep           
+#>  9 importFrom desc,description            
+#> 10 importFrom "magrittr,\"%>%\""          
+#> # ... with 12 more rows
+```
+
 You can update all `DESCRIPTION` entries to match the minimal versions
 required found with the above function.
 
