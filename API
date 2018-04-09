@@ -1,0 +1,9 @@
+# API for namespaces package
+
+## Exported functions
+
+collect_minimal_dependencies(path = ".")
+find_first_release(package, object)
+parse_cran_namespace(package, ...)
+parse_local_namespace(path = ".")
+write_minimal_dependencies(path = ".", namespace = NULL)
