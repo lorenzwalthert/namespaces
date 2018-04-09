@@ -12,10 +12,10 @@ compose_content_request(user, repo, path, ...)
 \item{repo}{The name of the repository of interest.}
 
 \item{path}{The path to the file for which the content should be retrieved
-relative to the root of `repo`.}
+relative to the root of \code{repo}.}
 
 \item{...}{Parameters for the request in the form of key / value parirs. See
-also [key_value_pair_to_chr()]}
+also \code{\link[=key_value_pair_to_chr]{key_value_pair_to_chr()}}}
 }
 \description{
 Create a content request

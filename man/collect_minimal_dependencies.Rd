@@ -4,7 +4,7 @@
 \alias{collect_minimal_dependencies}
 \title{What are the minimal dependencies of a package?}
 \usage{
-collect_minimal_dependencies(path)
+collect_minimal_dependencies(path = ".")
 }
 \arguments{
 \item{path}{The path to source package.}
@@ -15,14 +15,15 @@ Function to collect minimal dependencies of a package.
 \details{
 To find the minimal version of all packages needed given a source package,
 we first collect imported objects as follows:
+\itemize{
+\item Parse the name space of source package to find all imports.
+\item Parse all R files in R/ to find all masked imports like pkg::fun that
+are not visible in the NAMESPACE file.
+\item Packages that are imported as a whole, that is, for which the NAMESPACE
+entry is \code{import(pkg)} (e.g. via the roxygen tag \code{@import pkg}), we just
+assume that the latest version is required.
+}
 
-* Parse the name space of source package to find all imports.
-* Parse all R files in R/ to find all masked imports like pkg::fun that
-  are not visible in the NAMESPACE file.
-* Packages that are imported as a whole, that is, for which the NAMESPACE
-  entry is `import(pkg)` (e.g. via the roxygen tag `@import pkg`), we just
-  assume that the latest version is required.
-
-Next, we use [find_first_release()] to search through the NAMESPACE
+Next, we use \code{\link[=find_first_release]{find_first_release()}} to search through the NAMESPACE
 files of the CRAN releases of the resepecive packages.
 }

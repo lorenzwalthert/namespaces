@@ -9,15 +9,15 @@ find_first_release(package, object)
 \arguments{
 \item{package}{A package.}
 
-\item{object}{The exported object  in `package`. If `NA`, simply the last
+\item{object}{The exported object  in \code{package}. If \code{NA}, simply the last
 release is returned.}
 }
 \description{
-Find the first release of `package` that exports `object`. If no match is
-found, `NA` is returned.
+Find the first release of \code{package} that exports \code{object}. If no match is
+found, \code{NA} is returned.
 }
 \details{
-Queries the [GitHub CRAN mirror](https://github.com/metacran) to find all
+Queries the \href{https://github.com/metacran}{GitHub CRAN mirror} to find all
 releases of a packages and performs binary search on their NAMESPACE to find
 the first release in which a certain object was exported.
 }

@@ -12,9 +12,9 @@ fetch_gh_content(user, repo, path, ...)
 \item{repo}{The name of the repository of interest.}
 
 \item{path}{The path to the file for which the content should be retrieved
-relative to the root of `repo`.}
+relative to the root of \code{repo}.}
 
-\item{...}{Parameters passed to [compose_content_request()].}
+\item{...}{Parameters passed to \code{\link[=compose_content_request]{compose_content_request()}}.}
 }
 \description{
 Get the content of a file from a GitHub repository.

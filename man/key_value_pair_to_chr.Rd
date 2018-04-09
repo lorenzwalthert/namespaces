@@ -8,5 +8,5 @@ key_value_pair_to_chr(...)
 }
 \description{
 @para ... named arguments where the name is the key and the
-   value is the value.
+value is the value.
 }

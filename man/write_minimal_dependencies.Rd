@@ -11,8 +11,8 @@ write_minimal_dependencies(path = ".", namespace = NULL)
 adapted.}
 
 \item{namespace}{A name space in a tabular format, i.e. a data frame with
-two columns `package` and `object` to be written to a file. If `NULL`,
-[collect_minimal_dependencies()] will be used to obtain the information
+two columns \code{package} and \code{object} to be written to a file. If \code{NULL},
+\code{\link[=collect_minimal_dependencies]{collect_minimal_dependencies()}} will be used to obtain the information
 necessary.}
 }
 \description{
