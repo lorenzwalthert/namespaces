@@ -1,6 +1,6 @@
 extract_namespace_from_package_source <- function(path = ".") {
-  r_files <- list.files(file.path(path, "R/"))
-  map_dfr(file.path(path, "R/", r_files), extract_namespace_from_file) %>%
+  r_files <- fs::dir_ls(fs::path(path, "R/"), type = "file") %>%
+  map_dfr(extract_namespace_from_file) %>%
     type_object_to_namespace()
 }
 

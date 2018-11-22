@@ -6,7 +6,8 @@
 \alias{namespaces-package}
 \title{Working with name spaces}
 \description{
-Working with name spaces
+More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
 }
 \author{
 \strong{Maintainer}: Lorenz Walthert \email{lorenz.walthert@icloud.com}
