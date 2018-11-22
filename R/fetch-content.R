@@ -1,3 +1,5 @@
+gh_cached <- memoise::memoise(gh::gh)
+
 #' Fetch the content of a GitHub file
 #'
 #' Get the content of a file from a GitHub repository.
@@ -9,7 +11,7 @@
 #' )
 fetch_gh_content <- function(user, repo, path, ...) {
   request <- compose_content_request(user, repo, path, ...)
-  encoded <- gh(request)$content
+  encoded <- gh_cached(request)$content
   decode(encoded)
 }
 

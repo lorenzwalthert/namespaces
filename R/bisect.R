@@ -19,6 +19,7 @@ binary_search <- function(range, fun) {
   range <- split_range(range, direction)
   binary_search(range, fun)
 }
+binary_search_cached <- memoise::memoise(binary_search)
 
 #' How did it all end?
 #'

@@ -54,7 +54,7 @@ find_first_release <- function(package, object) {
   is_exported_in_ref_with_obj_and_pkg <- partial(
     obj_is_exported_in_ref, obj = object, package = package
   )
-  binary_search(all_tags, is_exported_in_ref_with_obj_and_pkg)
+  binary_search_cached(all_tags, is_exported_in_ref_with_obj_and_pkg)
 }
 
 #' Check whether an oject is exported by a certain package version

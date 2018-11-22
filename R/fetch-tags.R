@@ -6,7 +6,7 @@
 fetch_gh_tags <- function(user, repo) {
   get_request <- paste("/repos", user, repo, "git/refs/tags", sep = "/") %>%
     compose_get()
-  gh(get_request) %>%
+  gh_cached(get_request) %>%
     map_chr("ref") %>%
     extract_tags()
 }
