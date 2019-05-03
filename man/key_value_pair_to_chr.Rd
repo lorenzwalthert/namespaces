@@ -10,3 +10,4 @@ key_value_pair_to_chr(...)
 @para ... named arguments where the name is the key and the
 value is the value.
 }
+\keyword{internal}

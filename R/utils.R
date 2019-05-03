@@ -1,6 +1,7 @@
 #' Decode base64
 #'
 #' Decodes base64, which is a common format returned by the GitHub API.
+#' @keywords internal
 decode <- function(encoded) {
   rawToChar(base64enc::base64decode(encoded)) %>%
     strsplit("\n") %>%
@@ -12,6 +13,7 @@ decode <- function(encoded) {
 #'
 #'  @para ... named arguments where the name is the key and the
 #'    value is the value.
+#' @keywords internal
 key_value_pair_to_chr <- function(...) {
   values <- list(...)
   keys <- names(values)
@@ -22,6 +24,7 @@ key_value_pair_to_chr <- function(...) {
 remove_emtpy_chr <- function(x) {
   x[x != ""]
 }
+
 remove_comments <- function(x) {
   gsub("#.*$", "", x)
 }
@@ -30,6 +33,7 @@ remove_comments <- function(x) {
 #'
 #' @param x object to deframe
 #' @param deframe Whether or not to deframe.
+#' @keywords internal
 may_unlist <- function(x, deframe) {
   if (deframe) {
     x %>%

@@ -18,3 +18,4 @@ namespace <- namespaces:::fetch_gh_content(
 )
 namespaces:::parse_namespace_into_tabular(namespace)
 }
+\keyword{internal}

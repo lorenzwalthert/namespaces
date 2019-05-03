@@ -9,3 +9,4 @@ decode(encoded)
 \description{
 Decodes base64, which is a common format returned by the GitHub API.
 }
+\keyword{internal}

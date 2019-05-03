@@ -10,5 +10,6 @@ fetch_gh_tags(user, repo)
 Fetch all tags of a github repo
 }
 \examples{
-fetch_gh_tags("cran", "styler")
+namespaces:::fetch_gh_tags("cran", "styler")
 }
+\keyword{internal}

@@ -19,5 +19,6 @@ tabular <- tibble::tibble(
   type = "export",
   object = "base64encode, base64decode, dataURI, checkUTF8"
 )
-expand_multiple_io_per_line(tabular)
+namespaces:::expand_multiple_io_per_line(tabular)
 }
+\keyword{internal}

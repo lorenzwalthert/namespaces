@@ -17,3 +17,4 @@ not.}
 \description{
 Check whether an oject is exported by a certain package version
 }
+\keyword{internal}

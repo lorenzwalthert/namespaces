@@ -21,3 +21,4 @@ Returns \code{NA} if none of the elements in range evaluated to \code{TRUE} when
 \description{
 Plain binary search.
 }
+\keyword{internal}

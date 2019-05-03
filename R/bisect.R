@@ -10,6 +10,7 @@
 #' `fun` was applied to them. Otherwise, it will return the first element
 #' (going from left to right) for which `fun(range[i])` evaluated to `TRUE`.
 #' @importFrom rlang seq2
+#' @keywords internal
 binary_search <- function(range, fun) {
   terminal <- may_terminate(range, fun)
   if (length(terminal) == 1) {
@@ -21,6 +22,7 @@ binary_search <- function(range, fun) {
   range <- split_range(range, direction)
   binary_search(range, fun)
 }
+
 binary_search_cached <- memoise::memoise(binary_search)
 
 #' How did it all end?
@@ -31,6 +33,7 @@ binary_search_cached <- memoise::memoise(binary_search)
 #' written for performance, but just to be explicit.
 #' @param range A range of candidates for the bisection
 #' @param fun A function to be applied to range once range shrank to length one.
+#' @keywords internal
 may_terminate <- function(range, fun) {
   if (length(range) > 1) {
     return()

@@ -17,3 +17,4 @@ if one is found, otherwise return NA. If the search has not yet been
 determined, return a character string of length zero. The function is not
 written for performance, but just to be explicit.
 }
+\keyword{internal}

@@ -20,7 +20,8 @@ relative to the root of \code{repo}.}
 Get the content of a file from a GitHub repository.
 }
 \examples{
-fetch_gh_content(
+namespaces:::fetch_gh_content(
   user = "cran", repo = "styler", path = "NAMESPACE", ref = "1.0.0"
 )
 }
+\keyword{internal}

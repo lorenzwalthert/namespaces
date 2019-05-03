@@ -10,5 +10,6 @@ extract_tags(messy_ref)
 Extract tags from messy ref
 }
 \examples{
-extract_tags("refs/tags/1.0.0")
+namespaces:::extract_tags("refs/tags/1.0.0")
 }
+\keyword{internal}

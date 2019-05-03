@@ -66,6 +66,7 @@ find_first_release <- function(package, object) {
 #' @param ref The version reference to check.
 #' @param obj The object for which we want to know whether it is exported or
 #'   not.
+#' @keywords internal
 obj_is_exported_in_ref <- function(package, ref, obj) {
   exports <- parse_cran_namespace(package, ref = ref) %>%
     subset_exports()

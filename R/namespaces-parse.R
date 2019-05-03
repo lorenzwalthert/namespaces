@@ -8,6 +8,7 @@
 #' )
 #' namespaces:::parse_namespace_into_tabular(namespace)
 #' @importFrom purrr map_chr
+#' @keywords internal
 parse_namespace_into_tabular <- function(namespace) {
   bare_namespace <- remove_comments(namespace) %>%
     remove_emtpy_chr() %>%
@@ -32,8 +33,9 @@ parse_namespace_into_tabular <- function(namespace) {
 #'   type = "export",
 #'   object = "base64encode, base64decode, dataURI, checkUTF8"
 #' )
-#' expand_multiple_io_per_line(tabular)
+#' namespaces:::expand_multiple_io_per_line(tabular)
 #' @importFrom purrr pmap_dfr
+#' @keywords internal
 expand_multiple_io_per_line <- function(tabular_namespace) {
   pmap_dfr(tabular_namespace, expand_multiple_io)
 }

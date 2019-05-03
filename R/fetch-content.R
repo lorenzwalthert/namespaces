@@ -6,9 +6,10 @@ gh_cached <- memoise::memoise(gh::gh)
 #' @inheritParams compose_content_request
 #' @param ... Parameters passed to [compose_content_request()].
 #' @examples
-#' fetch_gh_content(
+#' namespaces:::fetch_gh_content(
 #'   user = "cran", repo = "styler", path = "NAMESPACE", ref = "1.0.0"
 #' )
+#' @keywords internal
 fetch_gh_content <- function(user, repo, path, ...) {
   request <- compose_content_request(user, repo, path, ...)
   encoded <- gh_cached(request)$content
@@ -23,6 +24,7 @@ fetch_gh_content <- function(user, repo, path, ...) {
 #'   relative to the root of `repo`.
 #' @param ... Parameters for the request in the form of key / value parirs. See
 #'   also [key_value_pair_to_chr()]
+#' @keywords internal
 compose_content_request <- function(user, repo, path, ...) {
   request <- paste("/repos", user, repo, "contents", path, sep = "/")
   pairs <- key_value_pair_to_chr(...)
