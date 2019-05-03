@@ -50,9 +50,12 @@ collect_minimal_dependencies <- function(path = ".") {
 find_first_release <- function(package, object) {
   all_tags <- fetch_gh_tags("cran", package) %>%
     subset_valid_tags()
-  if (is.na(object)) return(last(all_tags))
+  if (is.na(object)) {
+    return(last(all_tags))
+  }
   is_exported_in_ref_with_obj_and_pkg <- partial(
-    obj_is_exported_in_ref, obj = object, package = package
+    obj_is_exported_in_ref,
+    obj = object, package = package
   )
   binary_search_cached(all_tags, is_exported_in_ref_with_obj_and_pkg)
 }

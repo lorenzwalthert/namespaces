@@ -1,7 +1,7 @@
 #' Decode base64
 #'
 #' Decodes base64, which is a common format returned by the GitHub API.
-decode <- function(encoded){
+decode <- function(encoded) {
   rawToChar(base64enc::base64decode(encoded)) %>%
     strsplit("\n") %>%
     .[[1]]
@@ -15,12 +15,12 @@ decode <- function(encoded){
 key_value_pair_to_chr <- function(...) {
   values <- list(...)
   keys <- names(values)
-  paste(keys, unname(values), sep = "=" , collapse = "&") %>%
+  paste(keys, unname(values), sep = "=", collapse = "&") %>%
     remove_emtpy_chr()
 }
 
 remove_emtpy_chr <- function(x) {
-  x[x!=""]
+  x[x != ""]
 }
 remove_comments <- function(x) {
   gsub("#.*$", "", x)

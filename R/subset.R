@@ -11,7 +11,7 @@ is_export <- function(tabular_namespace) {
 
 subset_non_base_packages <- function(namespace) {
   base_idx <- namespace$package %in% base_pkgs()
-  namespace[!base_idx,]
+  namespace[!base_idx, ]
 }
 
 subset_valid_tags <- function(tags) {
@@ -30,18 +30,18 @@ subset_imported_pkgs <- function(tabular_namespace,
   tabular_import <- tabular_namespace[is_import, "object"]
   split <- strsplit(unlist(tabular_import), ",", fixed = TRUE)
   package <- split %>%
-    map_chr(~.x[1]) %>%
+    map_chr(~ .x[1]) %>%
     unname()
   object <- split %>%
-    map_chr(~.x[2]) %>%
+    map_chr(~ .x[2]) %>%
     unname()
   tibble(package, object)
 }
 
 subset_unique_imports <- function(imports) {
   imports_full_pkg <- is.na(imports$object)
-  complete_imports <- imports[imports_full_pkg,]
-  partial_imports <- imports[!imports_full_pkg,]
+  complete_imports <- imports[imports_full_pkg, ]
+  partial_imports <- imports[!imports_full_pkg, ]
 
   required_partial_imports <- setdiff(
     partial_imports$package, complete_imports$package

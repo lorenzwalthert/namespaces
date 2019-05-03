@@ -12,11 +12,11 @@ parse_namespace_into_tabular <- function(namespace) {
   bare_namespace <- remove_comments(namespace) %>%
     remove_emtpy_chr() %>%
     trimws() %>%
-    map_chr(~substr(.x, 1L, nchar(.x) - 1))
+    map_chr(~ substr(.x, 1L, nchar(.x) - 1))
   lst_namespace <- strsplit(bare_namespace, "(", fixed = TRUE)
   tibble(
-    type = map_chr(lst_namespace, ~.x[1]),
-    object = map_chr(lst_namespace, ~.x[2])
+    type = map_chr(lst_namespace, ~ .x[1]),
+    object = map_chr(lst_namespace, ~ .x[2])
   ) %>%
     expand_multiple_io_per_line()
 }
@@ -36,7 +36,6 @@ parse_namespace_into_tabular <- function(namespace) {
 #' @importFrom purrr pmap_dfr
 expand_multiple_io_per_line <- function(tabular_namespace) {
   pmap_dfr(tabular_namespace, expand_multiple_io)
-
 }
 
 #' @importFrom purrr flatten_chr
@@ -46,5 +45,4 @@ expand_multiple_io <- function(type, object) {
     strsplit(", ", fixed = TRUE) %>%
     flatten_chr()
   tibble(type, object = raw_exports)
-
 }

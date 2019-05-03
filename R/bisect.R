@@ -12,7 +12,9 @@
 #' @importFrom rlang seq2
 binary_search <- function(range, fun) {
   terminal <- may_terminate(range, fun)
-  if (length(terminal) == 1) return(terminal)
+  if (length(terminal) == 1) {
+    return(terminal)
+  }
   candidate <- middle_idx(range)
   result <- fun(range[candidate])
   direction <- ifelse(result, "lower", "upper")
@@ -30,7 +32,9 @@ binary_search_cached <- memoise::memoise(binary_search)
 #' @param range A range of candidates for the bisection
 #' @param fun A function to be applied to range once range shrank to length one.
 may_terminate <- function(range, fun) {
-  if (length(range) > 1) return()
+  if (length(range) > 1) {
+    return()
+  }
   if (!fun(range)) {
     NA
   } else {
@@ -39,7 +43,7 @@ may_terminate <- function(range, fun) {
 }
 
 middle_idx <- function(range) {
-  idx <- floor((length(range) + 1)/2)
+  idx <- floor((length(range) + 1) / 2)
   idx
 }
 

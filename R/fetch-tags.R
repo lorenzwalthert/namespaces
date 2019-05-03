@@ -17,5 +17,5 @@ fetch_gh_tags <- function(user, repo) {
 #' extract_tags("refs/tags/1.0.0")
 extract_tags <- function(messy_ref) {
   strsplit(messy_ref, "refs/tags/", fixed = TRUE) %>%
-    map_chr(~.x[length(.x)])
+    map_chr(~ .x[length(.x)])
 }
