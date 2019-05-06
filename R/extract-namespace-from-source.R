@@ -23,7 +23,7 @@ extract_namespace_from_code <- function(code) {
 
 #' @importFrom utils getParseData
 get_parse_data <- function(text) {
-  getParseData(parse(text = text))
+  getParseData(parse(text = text, keep.source = TRUE))
 }
 
 extract_namespace_from_parse_data <- function(parse_data) {

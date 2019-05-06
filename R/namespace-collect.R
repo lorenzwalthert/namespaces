@@ -18,10 +18,9 @@
 #' @importFrom purrr pmap_chr
 #' @export
 collect_minimal_dependencies <- function(path = ".") {
-  # desc <- parse_cran_description()
+
   clean_imports <- parse_local_namespace(path) %>%
     bind_rows(extract_namespace_from_package_source(path)) %>%
-    # add_row(type = desc$type, package = desc$package)
     subset_imported_pkgs() %>%
     subset_unique_imports() %>%
     subset_non_base_packages()

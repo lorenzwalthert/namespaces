@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-**This is highly experimental**
+**This is experimental**
 
 ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 
@@ -32,20 +32,34 @@ masked function calls (`pkg::fun()`) in your source code and the
 
 ``` r
 library("dplyr")
-collect_minimal_dependencies() %>%
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following object is masked from 'package:testthat':
+#> 
+#>     matches
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+collect_minimal_dependencies(here::here()) %>%
   group_by(package) %>%
-  summarize(min(first_release))
-#> # A tibble: 8 x 2
-#>   package   `min(first_release)`
-#>   <chr>     <chr>               
-#> 1 base64enc 0.1-0               
-#> 2 desc      1.0.0               
-#> 3 enc       0.1                 
-#> 4 gh        1.0.1               
-#> 5 magrittr  1.0.0               
-#> 6 purrr     0.1.0               
-#> 7 rlang     0.1                 
-#> 8 tibble    1.4.2
+  summarize(max(first_release))
+#> # A tibble: 10 x 2
+#>    package   `max(first_release)`
+#>    <chr>     <chr>               
+#>  1 base64enc 0.1-0               
+#>  2 desc      1.0.0               
+#>  3 enc       0.1                 
+#>  4 fs        1.0.0               
+#>  5 gh        1.0.1               
+#>  6 magrittr  1.0.0               
+#>  7 memoise   0.1                 
+#>  8 purrr     0.2.3               
+#>  9 rlang     0.1                 
+#> 10 tibble    2.1.1
 ```
 
 If you want to do namespaces analysis, you can also parse any namespace
@@ -53,7 +67,7 @@ from any package from CRAN.
 
 ``` r
 parse_cran_namespace("xgboost")
-#> # A tibble: 77 x 2
+#> # A tibble: 85 x 2
 #>    type     object                      
 #>    <chr>    <chr>                       
 #>  1 S3method "\"[\",xgb.DMatrix"         
@@ -66,7 +80,7 @@ parse_cran_namespace("xgboost")
 #>  8 S3method print,xgb.Booster           
 #>  9 S3method print,xgb.DMatrix           
 #> 10 S3method print,xgb.cv.synchronous    
-#> # ... with 67 more rows
+#> # … with 75 more rows
 ```
 
 Or a local name space:
@@ -86,7 +100,7 @@ parse_local_namespace(here::here())
 #>  8 importFrom desc,desc_set_dep           
 #>  9 importFrom desc,description            
 #> 10 importFrom "magrittr,\"%>%\""          
-#> # ... with 12 more rows
+#> # … with 12 more rows
 ```
 
 You can update all `DESCRIPTION` entries to match the minimal versions

@@ -9,12 +9,11 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  cache = TRUE
+  out.width = "100%"
 )
 ```
 
-**This is highly experimental**
+**This is experimental**
 
 ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 
@@ -41,11 +40,12 @@ find_first_release("dplyr", "mutate")
 You can collect all minimal dependencies of a package by inspecting 
 masked function calls (`pkg::fun()`) in your source code and the `NAMESPACE` of
 the package
-```{r}
+```{r, eval = TRUE}
 library("dplyr")
-collect_minimal_dependencies() %>%
+
+collect_minimal_dependencies(here::here()) %>%
   group_by(package) %>%
-  summarize(min(first_release))
+  summarize(max(first_release))
 ```
 
 If you want to do namespaces analysis, you can also parse any namespace from
